@@ -18,6 +18,7 @@ import jcaptcha4struts2.core.validation.JCaptchaValidator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ValidationAware;
@@ -51,6 +52,8 @@ public class JCaptchaValidationIntercepter extends AbstractInterceptor {
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		
+		log.debug("JCaptchaValidationInterceptor intercepting...");
+		
 		if (!(invocation.getAction() instanceof ValidationAware)) {
 			// Action does not implement ValidationAware, which is a requirement
 			// if JCaptchaValidationIntercepter is being used to intercept an action.
@@ -65,8 +68,15 @@ public class JCaptchaValidationIntercepter extends AbstractInterceptor {
 
 		// Validate and add field error if fails
 		if (! JCaptchaValidator.validate()) {
-			action.addFieldError("j_captcha_response", "Invalid Text");
+			log.debug("JCaptchaValidationInterceptor validation failed");
+			action.addFieldError("j_captcha_response", "Text is incorrect");
+			return Action.INPUT;
 		}
+		else {
+			log.debug("JCaptchaValidationInterceptor validation success");
+		}
+		
+		log.debug("JCaptchaValidationInterceptor completed");
 		
 		// Continue invocation
 		return invocation.invoke();

@@ -9,7 +9,7 @@ Installing and configuring JCaptcha4Struts2 is straight forward.
 
   # Download the latest version of the plugin from http://code.google.com/p/jcaptcha4struts2/downloads/list 
   # Include the JAR file with your Struts2 Application.
-  # Enable JCaptcha support by extending the provided base action class in your actions (which handle captcha input), or by configuring the intercepter. (See Configuration)
+  # Enable JCaptcha support by extending the provided base action class in your actions (which handle captcha input), or by configuring the intercepter. 
 
 ===2. Enabling JCaptcha support in your application===
 
@@ -24,7 +24,7 @@ Note that you should do only one of these. If you use both of these for a single
 
 This is fairly straight forward. Just extend your action class from `jcaptcha4struts2.common.actions.JCaptchaBaseAction` class.
 
-Following example shows a sample action which does exactly that. Note that there's nothing special realted to JCaptcha, except for the fact that it is extended from JCaptchaBaseAction class. This class transparently handles all activities necessary to validate captcha and to generate error messages. Note that this class extends from Struts2 ActionSupport class (thus all convenience methods are available).
+Following example shows a sample action which does exactly that. Note that there's nothing special realted to JCaptcha, except for the fact that it is extended from `JCaptchaBaseAction` class. This class transparently handles all activities necessary to validate captcha and to generate error messages. Note that this class extends from Struts2 `ActionSupport` class (thus all convenience methods are available).
 
 
 {{{

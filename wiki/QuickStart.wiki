@@ -1,3 +1,4 @@
+#labels Featured,Guide
 =JCaptcha4Struts2=
 
 ==Quick Start Guide==
@@ -14,14 +15,14 @@ Installing and configuring JCaptcha4Struts2 is straight forward.
 
 There are two ways to enable your application to use JCaptcha using this plugin. 
 
-  # Extend the Action which handles captcha from the provided JCaptchaBaseAction class
-  # Configure the Action to be intercepted by the provided JCaptchaValidationIntercepter.
+  # Extend the Action which handles captcha from the provided `JCaptchaBaseAction` class
+  # Configure the Action to be intercepted by the provided `JCaptchaValidationIntercepter`.
 
 Note that you should do only one of these. If you use both of these for a single action, it would result in exceptions (due to double validation for same captcha).
 
 ====2.1 Exending JCaptchaBaseAction====
 
-This is fairly straight forward. Just extend your action class from jcaptcha4struts2.common.actions.JCaptchaBaseAction class.
+This is fairly straight forward. Just extend your action class from `jcaptcha4struts2.common.actions.JCaptchaBaseAction` class.
 
 Following example shows a sample action which does exactly that. Note that there's nothing special realted to JCaptcha, except for the fact that it is extended from JCaptchaBaseAction class. This class transparently handles all activities necessary to validate captcha and to generate error messages. Note that this class extends from Struts2 ActionSupport class (thus all convenience methods are available).
 
@@ -63,7 +64,7 @@ public class MyFormActionWithCaptcha extends JCaptchaBaseAction {
 
 ====2.2 Using JCaptchaValidationIntercepter====
 
-Alternatively, you may require not to use any code which is specific to the plugin in your Java Source, or you may require to extend another class, apart from the JCaptchaBaseAction  class. In such scenarios, you may configure Struts2 to use JCaptchaValidationIntercepter to intercept action invocation and to perform captcha validation transparently.
+Alternatively, you may require not to use any code which is specific to the plugin in your Java Source, or you may require to extend another class, apart from the `JCaptchaBaseAction`  class. In such scenarios, you may configure Struts2 to use `JCaptchaValidationIntercepter` to intercept action invocation and to perform captcha validation transparently.
 
 Following code snippet from struts.xml shows how this is done.
 
@@ -82,14 +83,32 @@ Following code snippet from struts.xml shows how this is done.
 	</package>
 }}}
 
-As shown here, the action package should extend from jcaptcha4struts2-default package (which inturn extends struts-default). If this is not possible, you will have to configure the intercepter yourself by exposing the intercepter class jcaptcha4struts2.core.interceptors.JCaptchaValidationIntercepter. If you use the given package as your base package, this is done for you and you can simply refer to the intercepter by the name jcaptchaDefaultStack. This intercepter stack consists of the default struts2 stack followed  by the JCaptchaValidationIntercepter.
+As shown here, the action package should extend from `jcaptcha4struts2-default` package (which inturn extends struts-default). If this is not possible, you will have to configure the intercepter yourself by exposing the intercepter class `jcaptcha4struts2.core.interceptors.JCaptchaValidationIntercepter`. If you use the given package as your base package, this is done for you and you can simply refer to the intercepter by the name `jcaptchaDefaultStack`. This intercepter stack consists of the default struts2 stack followed  by the `JCaptchaValidationIntercepter`.
 
 The rest of the code is your normal action configuration.
 
+===3. Writing your JSP ===
 
-= Details =
+Write your JSP file, and add the following tag library declaration, along with struts tag library declaration.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+{{{
+<%@ taglib uri="http://code.google.com/p/jcaptcha4struts2/taglib/1.0" prefix="jcaptcha" %>
+}}}
+
+Then with in your form, just include `<jcaptcha:image label="Label Name Here"/>` tag.
+
+Example:
+{{{
+<s:form action="myformaction">
+	<s:textfield name="text" label="Text"/>
+	<!-- Rest of Controls -->
+
+	<!-- The JCaptcha Control -->
+	<jcaptcha:image label="Type the text "/>
+
+	<s:submit />
+</s:form>
+}}}
+
+===4. And .... ===
+Congratulations ! You have integrated JCaptcha support to your Struts 2 Application.

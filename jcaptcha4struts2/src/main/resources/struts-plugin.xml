@@ -36,18 +36,18 @@ Author : Yohan Liyanage
 	<package name="jcaptcha4struts2-default" extends="struts-default">
 				
 		<result-types>
-			<result-type name="captchaImage" class="jcaptcha4struts2.core.actions.support.CaptchaImageResult"/>
+			<result-type name="captchaImage" class="com.google.code.jcaptcha4struts2.core.actions.support.CaptchaImageResult"/>
 		</result-types>
 		
 		<interceptors>
-			<interceptor name="jcaptchaValidation" class="jcaptcha4struts2.core.interceptors.JCaptchaValidationIntercepter" />
+			<interceptor name="jcaptchaValidation" class="com.google.code.jcaptcha4struts2.core.interceptors.JCaptchaValidationIntercepter" />
 			<interceptor-stack name="jcaptchaDefaultStack">
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="jcaptchaValidation" />
 			</interceptor-stack>
 		</interceptors>
 		
-		<action name="jcaptcha_image"	class="jcaptcha4struts2.core.actions.JCaptchaImageAction">
+		<action name="jcaptcha_image"	class="com.google.code.jcaptcha4struts2.core.actions.JCaptchaImageAction">
 			<result type="captchaImage"/>
 		</action>
 		

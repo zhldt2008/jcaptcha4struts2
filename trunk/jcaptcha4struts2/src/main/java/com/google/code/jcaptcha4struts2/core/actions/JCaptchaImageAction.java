@@ -17,6 +17,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
@@ -26,9 +27,6 @@ import org.apache.struts2.ServletActionContext;
 import com.google.code.jcaptcha4struts2.core.beans.JC4S2Config;
 import com.octo.captcha.service.image.ImageCaptchaService;
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.image.codec.jpeg.ImageFormatException;
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 /**
  * This Struts2 Action generates the Captcha Image.
@@ -41,6 +39,7 @@ import com.sun.image.codec.jpeg.JPEGImageEncoder;
  */
 public class JCaptchaImageAction extends ActionSupport {
 
+	private static final String IMAGE_FORMAT = "jpg";
 	private static final long serialVersionUID = 563498642053643243L;
 	private static final Log log = LogFactory.getLog(JCaptchaImageAction.class);
 
@@ -74,18 +73,14 @@ public class JCaptchaImageAction extends ActionSupport {
 		BufferedImage image = getImageCaptchaService().getImageChallengeForID(captchaId,
 				request.getLocale());
 
-		// Convert to JPEG
-		JPEGImageEncoder jpegEncoder = JPEGCodec.createJPEGEncoder(imageOut);
+		// Encode to JPEG Stream
 		try {
-			jpegEncoder.encode(image);
-		} catch (ImageFormatException e) {
-			log.error("Unable to JPEG encode the Captcha Image due to ImageFormatException", e);
-			throw new IllegalArgumentException("Unable to JPEG encode the Captcha Image");
+			ImageIO.write(image, IMAGE_FORMAT, imageOut);
 		} catch (IOException e) {
 			log.error("Unable to JPEG encode the Captcha Image due to IOException", e);
 			throw new IllegalArgumentException("Unable to JPEG encode the Captcha Image");
 		}
-
+		
 		// Get byte[] for image
 		captchaImage = imageOut.toByteArray();
 

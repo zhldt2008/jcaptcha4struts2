@@ -10,11 +10,16 @@
 <title>JCaptcha4Struts2 - Demonstration Application</title>
 </head>
 <body>
+<div>
+<a href="http://code.google.com/p/jcaptcha4struts2"><img src='images/jc4s2_128.gif' style="border:0"/></a> 
+<font face="verdana" size="1"><a href="http://code.google.com/p/jcaptcha4struts2">http://code.google.com/p/jcaptcha4struts2</a></font> 
 <h2>Welcome to JCaptcha4Struts2 Demonstration Application</h2>
+</div>
 <br />
 <ul>
 	<li><a href="<s:url value='/form-no-intercept.jsp' />">Demo without interceptor</a></li>
 	<li><a href="<s:url value='/form-intercept.jsp' />">Demo with interceptor</a></li>
+	<li><a href="<s:url value='/form-intercept-simple.jsp' />">Demo with interceptor (Simple Theme)</a></li>
 </ul>
 </body>
 </html>

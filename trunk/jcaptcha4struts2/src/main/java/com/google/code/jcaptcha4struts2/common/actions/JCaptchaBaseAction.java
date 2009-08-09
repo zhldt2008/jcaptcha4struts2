@@ -123,10 +123,21 @@ public class JCaptchaBaseAction extends ActionSupport {
 			if (log.isDebugEnabled()) {
 				log.debug("validation failed, field error added");
 			}
-			addFieldError("j_captcha_response", "Invalid Captcha");
+			addFieldError("j_captcha_response", getValidationErrorMessage());
 		}
 	}
 
+	/**
+	 * Returns the error message text to be displayed if captcha validation fails.
+	 * <p>
+	 * Developers may override this method to provide custom messages.
+	 * 
+	 * @return error message to be displayed if captcha validation fails.
+	 */
+	protected String getValidationErrorMessage() {
+		return "Entered string does not match with image";
+	}
+	
 	/**
 	 * Implementers may override this method to provide validation logic, instead of standard
 	 * validate() method.

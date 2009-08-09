@@ -33,6 +33,10 @@ public class ImageTag extends AbstractUITag {
 
 	private static final long serialVersionUID = 7468575457921917799L;
 
+	private String width;
+	private String height;
+	private String textSize;
+	
 	/**
 	 * Returns the UI Component Bean for JCaptcha Image Tag.
 	 * <p>
@@ -46,7 +50,64 @@ public class ImageTag extends AbstractUITag {
 	 */
 	public Component getBean(ValueStack stack, HttpServletRequest request,
 			HttpServletResponse response) {
-		return new JCaptchaImage(stack, request, response);
+		
+		JCaptchaImage bean = new JCaptchaImage(stack, request, response);
+		
+		// Set attribute values 
+		bean.setWidth(width);
+		bean.setWidth(height);
+		bean.setTextSize(textSize);
+		
+		return bean;
 	}
 
+
+	/**
+	 * Returns width of the image displayed (pixels, specified in HTML attribute style).
+	 * @return width of image in pixels.
+	 */
+	public String getWidth() {
+		return width;
+	}
+
+	/**
+	 * Sets the width of the image displayed (pixels, specified in HTML attribute style).
+	 * @param width width of image in pixels.
+	 */
+	public void setWidth(String width) {
+		this.width = width;
+	}
+
+	/**
+	 * Returns the height of the image displayed (pixels, specified in HTML attribute style).
+	 * @return height of the image in pixels.
+	 */
+	public String getHeight() {
+		return height;
+	}
+
+	/**
+	 * Sets the height of the image displayed (pixels, specified in HTML attribute style).
+	 * @param height height of the image displayed in pixels
+	 */
+	public void setHeight(String height) {
+		this.height = height;
+	}
+
+	/**
+	 * Returns the size of captcha input text field (HTML size attribute of text fields).
+	 * @return the size of captcha input text field.
+	 */
+	public String getTextSize() {
+		return textSize;
+	}
+
+	/**
+	 * Sets the size of captcha input text field (HTML size attribute of text fields).
+	 * 
+	 * @param textSize the size of captcha input text field.
+	 */
+	public void setTextSize(String textSize) {
+		this.textSize = textSize;
+	}
 }

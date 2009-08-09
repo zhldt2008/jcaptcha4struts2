@@ -1,6 +1,8 @@
 #labels Phase-Deploy
 This wiki page provides guidelines for using different Image Captcha Service engines with JCaptcha4Struts2.
 
+<b>This applies to version 2.0 and above only.</b>
+
 = Introduction =
 
 JCaptcha4Struts2 by default uses the com.octo.captcha.service.image.DefaultManageableImageCaptchaService class to generate captcha. This class is instantiated internally within the plugin.

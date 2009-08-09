@@ -13,8 +13,6 @@
  */
 package com.google.code.jcaptcha4struts2.core;
 
-import com.google.code.jcaptcha4struts2.core.beans.JC4S2Config;
-
 
 /**
  * JCaptcha4Struts2 Plugin Constants.
@@ -24,19 +22,34 @@ import com.google.code.jcaptcha4struts2.core.beans.JC4S2Config;
  * @since 2.0
  * @version 2.0
  */
-public interface PluginConstants {
+public final class PluginConstants {
 
-	/**
-	 * Default ImageCaptchaService implementation constant.
-	 * Plugin will use an instance of this class if a ImageCaptchaService implementation
-	 * was not explicitly given.
-	 * <p>
-	 * It is possible to provide custom implementations using the {@link JC4S2Config} configuration
-	 * class. It exposes a property 
-	 * <p>
-	 * Currently, the default implementation is {@code
-	 * com.octo.captcha.service.image.DefaultManageableImageCaptchaService}.
-	 * 
-	 */
-	static final String DEFAULT_IMG_CAPTCHA_IMPL = "com.octo.captcha.service.image.DefaultManageableImageCaptchaService";
+    /**
+     * Disallow external instantiation.
+     */
+    private PluginConstants() {
+        // No External Instantiation
+    }
+    
+    /**
+     * Default ImageCaptchaService implementation constant. Plugin will use an instance of this
+     * class if a ImageCaptchaService implementation was not explicitly given.
+     * <p>
+     * It is possible to provide custom implementations using the {@code JC4S2Config} configuration
+     * class. It exposes a property
+     * <p>
+     * Currently, the default implementation is {@code
+     * com.octo.captcha.service.image.DefaultManageableImageCaptchaService}.
+     * 
+     */
+    public static final String DEFAULT_IMG_CAPTCHA_IMPL =
+            "com.octo.captcha.service.image.DefaultManageableImageCaptchaService";
+    
+    /**
+     * HTTP Request Parameter Name for JCaptchaResponse message.
+     * <p>
+     * This is the request parameter name that should be used to send the jcaptcha response
+     * for automatic validation process.
+     */
+    public static final String J_CAPTCHA_RESPONSE = "jCaptchaResponse";
 }

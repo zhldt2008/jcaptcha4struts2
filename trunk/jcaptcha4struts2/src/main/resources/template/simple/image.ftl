@@ -41,5 +41,5 @@ Image Verification
 />
 </div>
 <div>
-<@s.textfield name="j_captcha_response" />
+<@s.textfield name="jCaptchaResponse" />
 </div>

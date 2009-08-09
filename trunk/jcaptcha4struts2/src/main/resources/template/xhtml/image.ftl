@@ -17,8 +17,8 @@
  -->
 <#-- 
 
-Image Tag Template - XHTML
-==========================
+Image Tag Template - Simple
+===========================
 
 Author : Yohan Liyanage
 

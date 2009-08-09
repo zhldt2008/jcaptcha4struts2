@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+	<!--
+	   Copyright (C) 2008 - 2009 Yohan Liyanage.
+		
+	   Licensed under the Apache License, Version 2.0 (the "License");
+	   you may not use this file except in compliance with the License.
+	   You may obtain a copy of the License at
+	
+	       http://www.apache.org/licenses/LICENSE-2.0
+	
+	   Unless required by applicable law or agreed to in writing, software
+	   distributed under the License is distributed on an "AS IS" BASIS,
+	   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	   See the License for the specific language governing permissions and
+	   limitations under the License.
+	   
+	-->
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+
+	<!-- Package for Demonstration without interceptor -->
+	<package name="jcaptcha4struts2-testapp-no-intercept" extends="struts-default">
+
+		<action name="form-no-intercept"
+			class="com.google.code.jcaptcha4struts2.demo.actions.FormActionNoIntercepter">
+			<result name="input">/form-no-intercept.jsp</result>
+			<result>/success.jsp</result>
+		</action>
+
+	</package>
+
+	<!-- 
+		Package for demonstration using interceptor.
+		
+		Note that this package extends from jcaptcha4struts2-default.
+	-->
+	<package name="jcaptcha4struts2-testapp-intercept" extends="jcaptcha4struts2-default">
+
+		<action name="form-intercept"
+			class="com.google.code.jcaptcha4struts2.demo.actions.FormActionWithIntercepter">
+
+			<!-- Interceptor Stack -->
+			<interceptor-ref name="jcaptchaDefaultStack" />
+
+			<result name="input">/form-intercept.jsp</result>
+			<result>/success.jsp</result>
+		</action>
+
+	</package>
+
+</struts>
+

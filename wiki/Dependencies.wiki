@@ -1,0 +1,11 @@
+This page lists the dependencies of JCaptcha4Struts2.
+
+  * JCaptcha 1.0 ([http://mirrors.ibiblio.org/pub/mirrors/maven2/com/octo/captcha/jcaptcha/1.0/jcaptcha-1.0.jar Download])
+   # JCaptcha API 1.0 ([http://mirrors.ibiblio.org/pub/mirrors/maven2/com/octo/captcha/jcaptcha-api/1.0/jcaptcha-api-1.0.jar Download])
+   # com.jhlabs.imaging 01012005 ([http://maven.jahia.org/maven2/com/jhlabs/imaging/01012005/imaging-01012005.jar Download])
+   # Commons Collections 3.2
+  * Apache Struts2 (Tested with 2.0.11.1) & XWork (2.0.4 bundled with Struts2)
+  * Apache Commons Logging 1.1
+
+
+

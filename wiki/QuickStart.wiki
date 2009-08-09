@@ -22,7 +22,7 @@ Note that you should do only one of these. If you use both of these for a single
 
 ====2.1 Exending JCaptchaBaseAction====
 
-This is fairly straight forward. Just extend your action class from `jcaptcha4struts2.common.actions.JCaptchaBaseAction` class.
+This is fairly straight forward. Just extend your action class from `com.google.code.jcaptcha4struts2.common.actions.JCaptchaBaseAction` class.
 
 Following example shows a sample action which does exactly that. Note that there's nothing special realted to JCaptcha, except for the fact that it is extended from `JCaptchaBaseAction` class. This class transparently handles all activities necessary to validate captcha and to generate error messages. Note that this class extends from Struts2 `ActionSupport` class (thus all convenience methods are available).
 
@@ -83,7 +83,7 @@ Following code snippet from struts.xml shows how this is done.
 	</package>
 }}}
 
-As shown here, the action package should extend from `jcaptcha4struts2-default` package (which inturn extends struts-default). If this is not possible, you will have to configure the intercepter yourself by exposing the intercepter class `jcaptcha4struts2.core.interceptors.JCaptchaValidationIntercepter`. If you use the given package as your base package, this is done for you and you can simply refer to the intercepter by the name `jcaptchaDefaultStack`. This intercepter stack consists of the default struts2 stack followed  by the `JCaptchaValidationIntercepter`.
+As shown here, the action package should extend from `jcaptcha4struts2-default` package (which inturn extends struts-default). If this is not possible, you will have to configure the intercepter yourself by exposing the intercepter class `com.google.code.jcaptcha4struts2.core.interceptors.JCaptchaValidationIntercepter`. If you use the given package as your base package, this is done for you and you can simply refer to the intercepter by the name `jcaptchaDefaultStack`. This intercepter stack consists of the default struts2 stack followed  by the `JCaptchaValidationIntercepter`.
 
 The rest of the code is your normal action configuration.
 

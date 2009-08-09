@@ -51,7 +51,9 @@ public class JCaptchaValidationIntercepter extends AbstractInterceptor {
 	 */
 	public String intercept(ActionInvocation invocation) throws Exception {
 		
-		log.debug("JCaptchaValidationInterceptor intercepting...");
+		if (log.isDebugEnabled()) {
+			log.debug("JCaptchaValidationInterceptor intercepting...");
+		}
 		
 		if (!(invocation.getAction() instanceof ValidationAware)) {
 			// Action does not implement ValidationAware, which is a requirement
@@ -67,17 +69,30 @@ public class JCaptchaValidationIntercepter extends AbstractInterceptor {
 
 		// Validate and add field error if fails
 		if (! JCaptchaValidator.validate()) {
-			log.debug("JCaptchaValidationInterceptor validation failed");
-			action.addFieldError("j_captcha_response", "Text is incorrect");
+			
+			if (log.isDebugEnabled()) {
+				log.debug("JCaptchaValidationInterceptor validation failed");
+			}
+			action.addFieldError("j_captcha_response", getValidationErrorMessage());
 			return Action.INPUT;
 		}
-		else {
-			log.debug("JCaptchaValidationInterceptor validation success");
-		}
 		
-		log.debug("JCaptchaValidationInterceptor completed");
+		if (log.isDebugEnabled()) {
+			log.debug("JCaptchaValidationInterceptor validation completed successfully.");
+		}
 		
 		// Continue invocation
 		return invocation.invoke();
+	}
+
+	/**
+	 * Returns the error message text to be displayed if captcha validation fails.
+	 * <p>
+	 * Developers may override this method to provide custom messages.
+	 * 
+	 * @return error message to be displayed if captcha validation fails.
+	 */
+	protected String getValidationErrorMessage() {
+		return "Entered string does not match with image";
 	}
 }

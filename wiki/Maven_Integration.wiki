@@ -1,5 +1,4 @@
 #labels Phase-Deploy
-
 As of Version 2.0.1, JCaptcha4Struts2 is built using Maven 2. If your project also uses Maven 2, you may add a dependency to JCaptcha4Struts2 as follows:
 
 {{{
@@ -11,3 +10,5 @@ As of Version 2.0.1, JCaptcha4Struts2 is built using Maven 2. If your project al
       </dependency>
    </dependencies>
 }}}
+
+<b>Note :</b> JCaptcha4Struts2 is not available from Maven Central Repository yet. It is currently under the process of getting approved to be added to central.

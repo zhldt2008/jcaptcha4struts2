@@ -1,4 +1,7 @@
+#labels Phase-Deploy
 This page lists the dependencies of JCaptcha4Struts2.
+
+As of version 2.0.1, JCaptcha4Struts2 depends on...
 
   * JCaptcha 1.0 ([http://mirrors.ibiblio.org/pub/mirrors/maven2/com/octo/captcha/jcaptcha/1.0/jcaptcha-1.0.jar Download])
    # JCaptcha API 1.0 ([http://mirrors.ibiblio.org/pub/mirrors/maven2/com/octo/captcha/jcaptcha-api/1.0/jcaptcha-api-1.0.jar Download])
@@ -7,5 +10,8 @@ This page lists the dependencies of JCaptcha4Struts2.
   * Apache Struts2 (Tested with 2.0.11.1) & XWork (2.0.4 bundled with Struts2)
   * Apache Commons Logging 1.1
 
+Note that transitive dependencies on Apache Struts 2 is not listed.
 
+JCaptcha4Struts2 was developed and tested against Apache Struts 2.0.11.1. However, it is expected that it will work with other versions as well.
 
+Please comment here if you have tried this on other versions. If you have any issues regarding compatibility with other Struts2 versions, please log an issue in the Issue Tracker.

@@ -31,7 +31,7 @@ Image Verification
 </div>
 </#if>
 <div>
-<img src="<@s.url action='jcaptcha_image' />" <#rt/>
+<img src="<@s.url action='jcaptcha_image' />"<#rt/>
 <#if parameters.width?exists>
  width="${parameters.width?html}"<#rt/>
 </#if>
@@ -41,5 +41,5 @@ Image Verification
 />
 </div>
 <div>
-<@s.textfield name="j_captcha_response"/>
+<@s.textfield name="j_captcha_response" />
 </div>

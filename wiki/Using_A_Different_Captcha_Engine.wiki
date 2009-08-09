@@ -9,7 +9,7 @@ However, developers may require to use different ImageCaptchaService implementat
 
 There are two approaches to attach different captcha engines to the plugin.
 
-1. Programmatical Approach
+<b>1. Programmatical Approach</b>
 
 In programmatical approach, developers can directly attach an instance of any class that implements com.octo.captcha.service.image.ImageCaptchaService interface to the plugin.
 
@@ -18,7 +18,7 @@ For example, if your implementation of ImageCaptchaService is MyImageCaptchaServ
    JC4S2Config.getInstance().setImageCaptchaService(MyImageCaptchaServiceImpl());
 }}}
 
-2. Spring-based Approach
+<b>2. Spring-based Approach</b>
 
 Alternatively, if you are using Spring, you could use the following bean definition to achieve the same.
 

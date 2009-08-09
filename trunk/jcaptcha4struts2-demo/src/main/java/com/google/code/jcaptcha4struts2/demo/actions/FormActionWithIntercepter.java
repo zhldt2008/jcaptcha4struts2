@@ -18,8 +18,7 @@ import com.opensymphony.xwork2.ActionSupport;
 /**
  * Sample Action which uses interceptor for validation.
  * <p>
- * This is a plain old struts2 action, with no specific 
- * code regarding to JCaptcha4Struts2.
+ * This is a plain old struts2 action, with no specific code regarding to JCaptcha4Struts2.
  * <p>
  * See the struts.xml file for custom interceptor configuration.
  * 
@@ -29,36 +28,27 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class FormActionWithIntercepter extends ActionSupport {
 
-	private static final long serialVersionUID = 6643871470200594031L;
-	
-	private String text;
+    private static final long serialVersionUID = 6643871470200594031L;
 
-	/**
-	 * Standard Action Execution Method
-	 * 
-	 * @return action forward
-	 * @throws Exception if thrown by the ActionSupport execute method
-	 */
-	public String execute() throws Exception {
-		return super.execute();
-	}
-	
-	
-	/**
-	 * Returns the text provided by the user (using JSP).
-	 * @return text
-	 */
-	public String getText() {
-		return text;
-	}
+    private String text;
 
-	/**
-	 * Sets the text provided by the user (using JSP).
-	 * @param text text
-	 */
-	public void setText(String text) {
-		this.text = text;
-	}
+    /**
+     * Returns the text provided by the user (using JSP).
+     * 
+     * @return text
+     */
+    public String getText() {
+        return text;
+    }
 
-	
+    /**
+     * Sets the text provided by the user (using JSP).
+     * 
+     * @param text
+     *            text
+     */
+    public void setText(String text) {
+        this.text = text;
+    }
+
 }

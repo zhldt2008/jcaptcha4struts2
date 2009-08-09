@@ -11,7 +11,7 @@
   	<dependency>
   		<groupId>com.google.code.jcaptcha4struts2</groupId>
   		<artifactId>jcaptcha4struts2</artifactId>
-  		<version>2.0.1-SNAPSHOT</version>
+  		<version>2.0.1</version>
   	</dependency>
   </dependencies>
   <build>
@@ -28,8 +28,12 @@
     	<plugin>
     		<groupId>org.codehaus.mojo</groupId>
     		<artifactId>jboss-maven-plugin</artifactId>
+    	</plugin>
+    	<plugin>
+    		<groupId>org.apache.maven.plugins</groupId>
+    		<artifactId>maven-release-plugin</artifactId>
     		<configuration>
-    			<jbossHome>G:\libraries\jboss-4.2.3.GA</jbossHome>
+    			<tagBase>https://jcaptcha4struts2.googlecode.com/svn/tags</tagBase>
     		</configuration>
     	</plugin>
     </plugins>

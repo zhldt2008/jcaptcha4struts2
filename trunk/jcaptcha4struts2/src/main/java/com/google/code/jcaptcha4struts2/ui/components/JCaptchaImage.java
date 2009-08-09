@@ -29,6 +29,10 @@ import com.opensymphony.xwork2.util.ValueStack;
  */
 public class JCaptchaImage extends UIBean {
 
+	private String width;
+	private String height;
+	private String textSize;
+	
 	/**
 	 * Default Template Name.
 	 */
@@ -52,5 +56,58 @@ public class JCaptchaImage extends UIBean {
 	protected String getDefaultTemplate() {
 		return TEMPLATE;
 	}
+	
+	/**
+	 * Returns width of the image displayed (pixels, specified in HTML attribute style).
+	 * @return width of image in pixels.
+	 */
+	public String getWidth() {
+		return width;
+	}
+
+	/**
+	 * Sets the width of the image displayed (pixels, specified in HTML attribute style).
+	 * @param width width of image in pixels.
+	 */
+	public void setWidth(String width) {
+		this.width = width;
+		addParameter("width", width);
+	}
+
+	/**
+	 * Returns the height of the image displayed (pixels, specified in HTML attribute style).
+	 * @return height of the image in pixels.
+	 */
+	public String getHeight() {
+		return height;
+	}
+
+	/**
+	 * Sets the height of the image displayed (pixels, specified in HTML attribute style).
+	 * @param height height of the image displayed in pixels
+	 */
+	public void setHeight(String height) {
+		this.height = height;
+		addParameter("height", height);
+	}
+
+	/**
+	 * Returns the size of captcha input text field (HTML size attribute of text fields).
+	 * @return the size of captcha input text field.
+	 */
+	public String getTextSize() {
+		return textSize;
+	}
+
+	/**
+	 * Sets the size of captcha input text field (HTML size attribute of text fields).
+	 * 
+	 * @param textSize the size of captcha input text field.
+	 */
+	public void setTextSize(String textSize) {
+		this.textSize = textSize;
+		addParameter("textSize", textSize);
+	}
+
 
 }

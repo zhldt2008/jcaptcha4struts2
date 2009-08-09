@@ -22,6 +22,9 @@ For example, if your implementation of ImageCaptchaService is MyImageCaptchaServ
 
 Alternatively, if you are using Spring, you could use the following bean definition to achieve the same.
 
+This assumes that your Captcha Engine implementation is a bean configured in the same context under id myCaptchaServiceRef. Also you have to make sure that jc4s2config bean is configured prior to any action invocation.
 {{{
-Spring Bean Config Here
+<bean id="jc4s2config" class="com.google.code.jcaptcha4struts2.core.beans.JC4S2Config" factory-method="getInstance">
+	<property name="imageCaptchaService" ref="myCaptchaServiceRef" />
+</bean>
 }}}

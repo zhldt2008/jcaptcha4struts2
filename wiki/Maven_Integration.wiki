@@ -1,0 +1,12 @@
+#labels Phase-Deploy
+#As of Version 2.0.1, JCaptcha4Struts2 is built using Maven 2. If your project also uses Maven 2, you may add a dependency to JCaptcha4Struts2 as follows:
+
+{{{
+   <dependencies>
+      <dependency>
+         <groupId>com.google.code.jcaptcha4struts2</groupId>
+         <artifactId>jcaptcha4struts2</artifactId>
+         <version>2.0.1</version>
+      </dependency>
+   </dependencies>
+}}}

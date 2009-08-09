@@ -39,69 +39,71 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class JCaptchaImageAction extends ActionSupport {
 
-	private static final String IMAGE_FORMAT = "jpg";
-	private static final long serialVersionUID = 563498642053643243L;
-	private static final Log log = LogFactory.getLog(JCaptchaImageAction.class);
+    private static final String IMAGE_FORMAT = "jpg";
+    private static final long serialVersionUID = 563498642053643243L;
+    private static final Log LOG = LogFactory.getLog(JCaptchaImageAction.class);
 
-	/**
-	 * Holds the byte[] for JPEG encoded Captcha Image.
-	 */
-	private byte[] captchaImage;
+    /**
+     * Holds the byte[] for JPEG encoded Captcha Image.
+     */
+    private byte[] captchaImage;
 
-	/**
-	 * Action execution logic, which generates the Captcha Image Stream and sets the JPEG encoded
-	 * byte stream to captchaImage field.
-	 * <p>
-	 * Subsequent to invocation of this method, the generated captcha is available through
-	 * {@link #getCaptchaImage()} method.
-	 * 
-	 * @throws Exception
-	 */
-	public String execute() {
+    /**
+     * Action execution logic, which generates the Captcha Image Stream and sets the JPEG encoded
+     * byte stream to captchaImage field.
+     * <p>
+     * Subsequent to invocation of this method, the generated captcha is available through
+     * {@link #getCaptchaImage()} method.
+     * 
+     * @return action forward string
+     * 
+     * @throws Exception
+     */
+    public String execute() {
 
-		ByteArrayOutputStream imageOut = new ByteArrayOutputStream();
-		HttpServletRequest request = ServletActionContext.getRequest();
+        ByteArrayOutputStream imageOut = new ByteArrayOutputStream();
+        HttpServletRequest request = ServletActionContext.getRequest();
 
-		// Captcha Id is the session ID
-		String captchaId = request.getSession().getId();
+        // Captcha Id is the session ID
+        String captchaId = request.getSession().getId();
 
-		if (log.isDebugEnabled()) {
-			log.debug("Generating Captcha Image for SessionID : " + captchaId);
-		}
-		
-		// Generate Captcha Image
-		BufferedImage image = getImageCaptchaService().getImageChallengeForID(captchaId,
-				request.getLocale());
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("Generating Captcha Image for SessionID : " + captchaId);
+        }
 
-		// Encode to JPEG Stream
-		try {
-			ImageIO.write(image, IMAGE_FORMAT, imageOut);
-		} catch (IOException e) {
-			log.error("Unable to JPEG encode the Captcha Image due to IOException", e);
-			throw new IllegalArgumentException("Unable to JPEG encode the Captcha Image");
-		}
-		
-		// Get byte[] for image
-		captchaImage = imageOut.toByteArray();
+        // Generate Captcha Image
+        BufferedImage image =
+                getImageCaptchaService().getImageChallengeForID(captchaId, request.getLocale());
 
-		return SUCCESS;
-	}
+        // Encode to JPEG Stream
+        try {
+            ImageIO.write(image, IMAGE_FORMAT, imageOut);
+        } catch (IOException e) {
+            LOG.error("Unable to JPEG encode the Captcha Image due to IOException", e);
+            throw new IllegalArgumentException("Unable to JPEG encode the Captcha Image", e);
+        }
 
-	/**
-	 * Returns the byte stream for JPEG encoded captcha image.
-	 * 
-	 * @return byte stream for JPEG encoded captcha image
-	 */
-	public byte[] getCaptchaImage() {
-		return captchaImage;
-	}
+        // Get byte[] for image
+        captchaImage = imageOut.toByteArray();
 
-	/**
-	 * Returns the ImageCaptchaService implementation, obtained via the {@link JC4S2Config}.
-	 * 
-	 * @return image captcha service implementation.
-	 */
-	protected ImageCaptchaService getImageCaptchaService() {
-		return JC4S2Config.getInstance().getImageCaptchaService();
-	}
+        return SUCCESS;
+    }
+
+    /**
+     * Returns the byte stream for JPEG encoded captcha image.
+     * 
+     * @return byte stream for JPEG encoded captcha image
+     */
+    public byte[] getCaptchaImage() {
+        return captchaImage;
+    }
+
+    /**
+     * Returns the ImageCaptchaService implementation, obtained via the {@link JC4S2Config}.
+     * 
+     * @return image captcha service implementation.
+     */
+    protected ImageCaptchaService getImageCaptchaService() {
+        return JC4S2Config.getInstance().getImageCaptchaService();
+    }
 }

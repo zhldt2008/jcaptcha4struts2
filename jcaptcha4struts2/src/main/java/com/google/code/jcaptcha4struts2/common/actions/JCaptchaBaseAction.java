@@ -33,120 +33,140 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class JCaptchaBaseAction extends ActionSupport {
 
-	private static final Log log = LogFactory.getLog(JCaptchaBaseAction.class);
+    private static final Log LOG = LogFactory.getLog(JCaptchaBaseAction.class);
 
-	private static final long serialVersionUID = -5245380448623189946L;
+    private static final long serialVersionUID = -5245380448623189946L;
 
-	/**
-	 * Stores the actual captcha response.
-	 */
-	private String j_captcha_response;
-	
-	/**
-	 * Flag whether validation should be done.
-	 */
-	private boolean validate = true;
+    /**
+     * Stores the actual captcha response.
+     */
+    private String jCaptchaResponse;
 
-	/**
-	 * No-args constructor. Builds a JCaptchaBaseAction which does the validation automatically
-	 * through {@link #validate()} method.
-	 */
-	public JCaptchaBaseAction() {
-		super();
-	}
+    /**
+     * Flag whether validation should be done.
+     */
+    private boolean validationEnabled = true;
 
-	/**
-	 * Constructs a JCaptchaBaseAction which allows to enable / disable automatic validation through
-	 * {@link #validate()}. If disabled, implementor is required to manually invoke
-	 * {@link #doValidateCaptcha()} method for validation.
-	 * <p>
-	 * Subclasses may utilize this constructor to disable automatic validation.
-	 * 
-	 * @param validate
-	 *            enable / disable auto-validation
-	 */
-	public JCaptchaBaseAction(boolean validate) {
-		super();
-		this.validate = validate;
-	}
+    /**
+     * No-args constructor. Builds a JCaptchaBaseAction which does the validation automatically
+     * through {@link #validate()} method.
+     */
+    public JCaptchaBaseAction() {
+        super();
+    }
 
-	/**
-	 * Returns JCaptcha response by user.
-	 * 
-	 * @return jcaptcha response by user
-	 */
-	public String getJ_captcha_response() {
-		return j_captcha_response;
-	}
+    /**
+     * Constructs a JCaptchaBaseAction which allows to enable / disable automatic validation through
+     * {@link #validate()}. If disabled, implementor is required to manually invoke
+     * {@link #doValidateCaptcha()} method for validation.
+     * <p>
+     * Subclasses may utilize this constructor to disable automatic validation.
+     * 
+     * @param validationEnabled
+     *            enable / disable auto-validation
+     */
+    public JCaptchaBaseAction(boolean validationEnabled) {
+        super();
+        this.validationEnabled = validationEnabled;
+    }
 
-	/**
-	 * Sets JCaptcha response by user.
-	 * 
-	 * @param j_captcha_response
-	 *            response
-	 */
-	public void setJ_captcha_response(String j_captcha_response) {
-		this.j_captcha_response = j_captcha_response;
-	}
+    /**
+     * Returns JCaptcha response by user.
+     * 
+     * @return jcaptcha response by user
+     */
+    public String getJCaptchaResponse() {
+        return jCaptchaResponse;
+    }
 
-	/**
-	 * Validates the JCaptcha response and adds a field error if validation fails, given that the
-	 * validation is enabled (default case).
-	 * <p>
-	 * This method is final, and is not overridable. To provide your own validation logic, use the
-	 * {@link #validateInput()} method.
-	 */
-	public final void validate() {
+    /**
+     * Sets JCaptcha response by user.
+     * 
+     * @param jCaptchaResponse
+     *            jcaptcha response by user
+     */
+    public void setJCaptchaResponse(String jCaptchaResponse) {
+        this.jCaptchaResponse = jCaptchaResponse;
+    }
 
-		if (validate) {
-			doValidateCaptcha();
-		} else {
-			if (log.isDebugEnabled()) {
-				log.debug("Skipping validation of captcha as validate=false");
-			}
-		}
+    /**
+     * Validates the JCaptcha response and adds a field error if validation fails, given that the
+     * validation is enabled (default case).
+     * <p>
+     * This method is final, and is not overridable. To provide your own validation logic, use the
+     * {@link #validateInput()} method.
+     */
+    public final void validate() {
 
-		// Invoke user validation routines
-		validateInput();
-	}
+        if (validationEnabled) {
+            doValidateCaptcha();
+        } else {
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("Skipping validation of captcha as validate=false");
+            }
+        }
 
-	/**
-	 * Validates the JCaptcha response and adds a field error if validation fails.
-	 */
-	protected void doValidateCaptcha() {
+        // Invoke user validation routines
+        validateInput();
+    }
 
-		if (log.isDebugEnabled()) {
-			log.debug("Validating  : " + j_captcha_response);
-		}
+    /**
+     * Validates the JCaptcha response and adds a field error if validation fails.
+     */
+    protected void doValidateCaptcha() {
 
-		if (!JCaptchaValidator.validate()) {
-			if (log.isDebugEnabled()) {
-				log.debug("validation failed, field error added");
-			}
-			addFieldError("j_captcha_response", getValidationErrorMessage());
-		}
-	}
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("Validating  : " + jCaptchaResponse);
+        }
 
-	/**
-	 * Returns the error message text to be displayed if captcha validation fails.
-	 * <p>
-	 * Developers may override this method to provide custom messages.
-	 * 
-	 * @return error message to be displayed if captcha validation fails.
-	 */
-	protected String getValidationErrorMessage() {
-		return "Entered string does not match with image";
-	}
-	
-	/**
-	 * Implementers may override this method to provide validation logic, instead of standard
-	 * validate() method.
-	 * <p>
-	 * This method will be invoked from the validate() method, which is final in this class, and not
-	 * overridable.
-	 */
-	public void validateInput() {
-		// No-implementation
-	}
+        if (!JCaptchaValidator.validate()) {
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("validation failed (input string : '" + jCaptchaResponse
+                        + "'), field error added");
+            }
+            addFieldError("j_captcha_response", getValidationErrorMessage());
+        }
+    }
 
+    /**
+     * Returns the error message text to be displayed if captcha validation fails.
+     * <p>
+     * Developers may override this method to provide custom messages.
+     * 
+     * @return error message to be displayed if captcha validation fails.
+     */
+    protected String getValidationErrorMessage() {
+        return "Entered string does not match with image";
+    }
+
+    /**
+     * Implementers may override this method to provide validation logic, instead of standard
+     * validate() method.
+     * <p>
+     * This method will be invoked from the validate() method, which is final in this class, and not
+     * overridable.
+     */
+    public void validateInput() {
+        // No-implementation
+    }
+
+    /**
+     * Returns true if automatic validation is enabled.
+     * 
+     * @return true if automatic validation is enabled.
+     */
+    public boolean isValidationEnabled() {
+        return validationEnabled;
+    }
+
+    /**
+     * Sets whether automatic validation is enabled.
+     * 
+     * @param validationEnabled if true, automatic validation will be enabled.
+     */
+    public void setValidationEnabled(boolean validationEnabled) {
+        this.validationEnabled = validationEnabled;
+    }
+
+    
 }

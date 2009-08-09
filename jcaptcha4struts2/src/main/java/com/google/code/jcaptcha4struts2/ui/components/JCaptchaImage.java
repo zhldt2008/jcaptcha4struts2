@@ -29,85 +29,96 @@ import com.opensymphony.xwork2.util.ValueStack;
  */
 public class JCaptchaImage extends UIBean {
 
-	private String width;
-	private String height;
-	private String textSize;
-	
-	/**
-	 * Default Template Name.
-	 */
-	private static final String TEMPLATE = "image";
-	
-	/**
-	 * JCaptchaImage UI Bean Constructor.
-	 * 
-	 * @param stack Struts 2 Value Stack
-	 * @param request HttpServletRequest object for invocation
-	 * @param response HttpServletResponse object for invocation
-	 */
-	public JCaptchaImage(ValueStack stack, HttpServletRequest request,
-			HttpServletResponse response) {
-		super(stack, request, response);
-	}
+    private String width;
+    private String height;
+    private String textSize;
 
-	/**
-	 * Returns the Default Template Name for JCaptchaImage UI Bean.
-	 */
-	protected String getDefaultTemplate() {
-		return TEMPLATE;
-	}
-	
-	/**
-	 * Returns width of the image displayed (pixels, specified in HTML attribute style).
-	 * @return width of image in pixels.
-	 */
-	public String getWidth() {
-		return width;
-	}
+    /**
+     * Default Template Name.
+     */
+    private static final String TEMPLATE = "image";
 
-	/**
-	 * Sets the width of the image displayed (pixels, specified in HTML attribute style).
-	 * @param width width of image in pixels.
-	 */
-	public void setWidth(String width) {
-		this.width = width;
-		addParameter("width", width);
-	}
+    /**
+     * JCaptchaImage UI Bean Constructor.
+     * 
+     * @param stack
+     *            Struts 2 Value Stack
+     * @param request
+     *            HttpServletRequest object for invocation
+     * @param response
+     *            HttpServletResponse object for invocation
+     */
+    public JCaptchaImage(ValueStack stack, HttpServletRequest request, HttpServletResponse response) {
+        super(stack, request, response);
+    }
 
-	/**
-	 * Returns the height of the image displayed (pixels, specified in HTML attribute style).
-	 * @return height of the image in pixels.
-	 */
-	public String getHeight() {
-		return height;
-	}
+    /**
+     * Returns the Default Template Name for JCaptchaImage UI Bean.
+     * 
+     * @return default template name
+     */
+    protected String getDefaultTemplate() {
+        return TEMPLATE;
+    }
 
-	/**
-	 * Sets the height of the image displayed (pixels, specified in HTML attribute style).
-	 * @param height height of the image displayed in pixels
-	 */
-	public void setHeight(String height) {
-		this.height = height;
-		addParameter("height", height);
-	}
+    /**
+     * Returns width of the image displayed (pixels, specified in HTML attribute style).
+     * 
+     * @return width of image in pixels.
+     */
+    public String getWidth() {
+        return width;
+    }
 
-	/**
-	 * Returns the size of captcha input text field (HTML size attribute of text fields).
-	 * @return the size of captcha input text field.
-	 */
-	public String getTextSize() {
-		return textSize;
-	}
+    /**
+     * Sets the width of the image displayed (pixels, specified in HTML attribute style).
+     * 
+     * @param width
+     *            width of image in pixels.
+     */
+    public void setWidth(String width) {
+        this.width = width;
+        addParameter("width", width);
+    }
 
-	/**
-	 * Sets the size of captcha input text field (HTML size attribute of text fields).
-	 * 
-	 * @param textSize the size of captcha input text field.
-	 */
-	public void setTextSize(String textSize) {
-		this.textSize = textSize;
-		addParameter("textSize", textSize);
-	}
+    /**
+     * Returns the height of the image displayed (pixels, specified in HTML attribute style).
+     * 
+     * @return height of the image in pixels.
+     */
+    public String getHeight() {
+        return height;
+    }
 
+    /**
+     * Sets the height of the image displayed (pixels, specified in HTML attribute style).
+     * 
+     * @param height
+     *            height of the image displayed in pixels
+     */
+    public void setHeight(String height) {
+        this.height = height;
+        addParameter("height", height);
+    }
+
+    /**
+     * Returns the size of captcha input text field (HTML size attribute of text fields).
+     * 
+     * @return the size of captcha input text field.
+     */
+    public String getTextSize() {
+        return textSize;
+    }
+
+    /**
+     * Sets the size of captcha input text field (HTML size attribute of text fields).
+     * 
+     * @param textSize
+     *            the size of captcha input text field.
+     */
+    public void setTextSize(String textSize) {
+        this.textSize = textSize;
+        addParameter("textSize", textSize);
+    }
 
 }

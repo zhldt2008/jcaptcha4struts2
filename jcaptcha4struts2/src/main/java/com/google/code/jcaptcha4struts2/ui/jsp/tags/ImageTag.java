@@ -31,83 +31,93 @@ import com.opensymphony.xwork2.util.ValueStack;
  */
 public class ImageTag extends AbstractUITag {
 
-	private static final long serialVersionUID = 7468575457921917799L;
+    private static final long serialVersionUID = 7468575457921917799L;
 
-	private String width;
-	private String height;
-	private String textSize;
-	
-	/**
-	 * Returns the UI Component Bean for JCaptcha Image Tag.
-	 * <p>
-	 * This will return an instance of {@link JCaptchaImage}.
-	 * 
-	 *  @param stack Struts 2 Value Stack
-	 *  @param request HttpServletRequest for invocation
-	 *  @param response HttpServletResponse for invocation
-	 *  
-	 *  @return instance of UI Component for JCaptcha Image Tag.
-	 */
-	public Component getBean(ValueStack stack, HttpServletRequest request,
-			HttpServletResponse response) {
-		
-		JCaptchaImage bean = new JCaptchaImage(stack, request, response);
-		
-		// Set attribute values 
-		bean.setWidth(width);
-		bean.setWidth(height);
-		bean.setTextSize(textSize);
-		
-		return bean;
-	}
+    private String width;
+    private String height;
+    private String textSize;
 
+    /**
+     * Returns the UI Component Bean for JCaptcha Image Tag.
+     * <p>
+     * This will return an instance of {@link JCaptchaImage}.
+     * 
+     * @param stack
+     *            Struts 2 Value Stack
+     * @param request
+     *            HttpServletRequest for invocation
+     * @param response
+     *            HttpServletResponse for invocation
+     * 
+     * @return instance of UI Component for JCaptcha Image Tag.
+     */
+    public Component getBean(ValueStack stack, HttpServletRequest request,
+            HttpServletResponse response) {
 
-	/**
-	 * Returns width of the image displayed (pixels, specified in HTML attribute style).
-	 * @return width of image in pixels.
-	 */
-	public String getWidth() {
-		return width;
-	}
+        JCaptchaImage bean = new JCaptchaImage(stack, request, response);
 
-	/**
-	 * Sets the width of the image displayed (pixels, specified in HTML attribute style).
-	 * @param width width of image in pixels.
-	 */
-	public void setWidth(String width) {
-		this.width = width;
-	}
+        // Set attribute values
+        bean.setWidth(width);
+        bean.setWidth(height);
+        bean.setTextSize(textSize);
 
-	/**
-	 * Returns the height of the image displayed (pixels, specified in HTML attribute style).
-	 * @return height of the image in pixels.
-	 */
-	public String getHeight() {
-		return height;
-	}
+        return bean;
+    }
 
-	/**
-	 * Sets the height of the image displayed (pixels, specified in HTML attribute style).
-	 * @param height height of the image displayed in pixels
-	 */
-	public void setHeight(String height) {
-		this.height = height;
-	}
+    /**
+     * Returns width of the image displayed (pixels, specified in HTML attribute style).
+     * 
+     * @return width of image in pixels.
+     */
+    public String getWidth() {
+        return width;
+    }
 
-	/**
-	 * Returns the size of captcha input text field (HTML size attribute of text fields).
-	 * @return the size of captcha input text field.
-	 */
-	public String getTextSize() {
-		return textSize;
-	}
+    /**
+     * Sets the width of the image displayed (pixels, specified in HTML attribute style).
+     * 
+     * @param width
+     *            width of image in pixels.
+     */
+    public void setWidth(String width) {
+        this.width = width;
+    }
 
-	/**
-	 * Sets the size of captcha input text field (HTML size attribute of text fields).
-	 * 
-	 * @param textSize the size of captcha input text field.
-	 */
-	public void setTextSize(String textSize) {
-		this.textSize = textSize;
-	}
+    /**
+     * Returns the height of the image displayed (pixels, specified in HTML attribute style).
+     * 
+     * @return height of the image in pixels.
+     */
+    public String getHeight() {
+        return height;
+    }
+
+    /**
+     * Sets the height of the image displayed (pixels, specified in HTML attribute style).
+     * 
+     * @param height
+     *            height of the image displayed in pixels
+     */
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    /**
+     * Returns the size of captcha input text field (HTML size attribute of text fields).
+     * 
+     * @return the size of captcha input text field.
+     */
+    public String getTextSize() {
+        return textSize;
+    }
+
+    /**
+     * Sets the size of captcha input text field (HTML size attribute of text fields).
+     * 
+     * @param textSize
+     *            the size of captcha input text field.
+     */
+    public void setTextSize(String textSize) {
+        this.textSize = textSize;
+    }
 }

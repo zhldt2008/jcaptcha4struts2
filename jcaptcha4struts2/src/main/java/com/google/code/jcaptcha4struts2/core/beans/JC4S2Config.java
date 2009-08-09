@@ -32,121 +32,103 @@ import com.octo.captcha.service.image.ImageCaptchaService;
  * @since 2.0
  * @version 2.0
  */
-public class JC4S2Config {
+public final class JC4S2Config {
 
-	/**
-	 * Logger for {@link JC4S2Config}.
-	 */
-	private static final Log log = LogFactory.getLog(JC4S2Config.class);
+    /**
+     * Logger for {@link JC4S2Config}.
+     */
+    private static final Log LOG = LogFactory.getLog(JC4S2Config.class);
 
-	/**
-	 * Singleton Instance.
-	 */
-	private static final JC4S2Config INSTANCE = new JC4S2Config();
+    /**
+     * Singleton Instance.
+     */
+    private static final JC4S2Config INSTANCE = new JC4S2Config();
 
-	/**
-	 * ImageCaptchaService Implementation.
-	 */
-	private ImageCaptchaService imageCaptchaService;
+    /**
+     * ImageCaptchaService Implementation.
+     */
+    private ImageCaptchaService imageCaptchaService;
 
-	/**
-	 * Returns the singleton instance of the {@link JC4S2Config} class.
-	 * 
-	 * @return singleton instance.
-	 */
-	public static JC4S2Config getInstance() {
-		return INSTANCE;
-	}
+    /**
+     * Returns the singleton instance of the {@link JC4S2Config} class.
+     * 
+     * @return singleton instance.
+     */
+    public static JC4S2Config getInstance() {
+        return INSTANCE;
+    }
 
-	/**
-	 * No-args constructor. This is private to ensure that singleton state is maintained.
-	 */
-	private JC4S2Config() {
-		// Singleton
-	}
+    /**
+     * No-args constructor. This is private to ensure that singleton state is maintained.
+     */
+    private JC4S2Config() {
+        // Singleton
+    }
 
-	/**
-	 * Returns the {@link ImageCaptchaService} implementation.
-	 * 
-	 * @return ImageCapthcaService implementation
-	 */
-	public ImageCaptchaService getImageCaptchaService() {
+    /**
+     * Returns the {@link ImageCaptchaService} implementation.
+     * 
+     * @return ImageCapthcaService implementation
+     */
+    public ImageCaptchaService getImageCaptchaService() {
 
-		if (imageCaptchaService == null) {
-			
-			// If ImageCaptchaService is not configured yet, fall-back to default.
-			
-			synchronized (JC4S2Config.class) {
-				
-				// Locking is necessary to ensure that only a single ImageCaptchaService is used
-				// to generate captcha.
-				
-				if (imageCaptchaService == null) {
-					imageCaptchaService = getDefaultImageCaptchaService();
-				}
-			}
-		}
+        synchronized (JC4S2Config.class) {
+            /*
+             * If ImageCaptchaService is not configured yet, fall-back to default. Locking is
+             * necessary to ensure that only a single ImageCaptchaService is used to generate
+             * captcha.
+             */
+            if (imageCaptchaService == null) {
+                imageCaptchaService = getDefaultImageCaptchaService();
+            }
+        }
 
-		return imageCaptchaService;
-	}
+        return imageCaptchaService;
+    }
 
+    /**
+     * Sets the {@link ImageCaptchaService} implementation.
+     * 
+     * @param imageCaptchaService
+     *            ImageCapthcaService implementation
+     */
+    public void setImageCaptchaService(ImageCaptchaService imageCaptchaService) {
+        this.imageCaptchaService = imageCaptchaService;
+    }
 
-	/**
-	 * Sets the {@link ImageCaptchaService} implementation.
-	 * 
-	 * @param imageCaptchaService
-	 *            ImageCapthcaService implementation
-	 */
-	public void setImageCaptchaService(ImageCaptchaService imageCaptchaService) {
-		this.imageCaptchaService = imageCaptchaService;
-	}
-	
-	/**
-	 * Returns the default {@link ImageCaptchaService} instance.
-	 * <p>
-	 * The default image captcha service is defined as a {@code PluginConstant}.
-	 * 
-	 * @return default {@link ImageCaptchaService} instance
-	 */
-	private static ImageCaptchaService getDefaultImageCaptchaService() {
+    /**
+     * Returns the default {@link ImageCaptchaService} instance.
+     * <p>
+     * The default image captcha service is defined as a {@code PluginConstant}.
+     * 
+     * @return default {@link ImageCaptchaService} instance
+     */
+    private static ImageCaptchaService getDefaultImageCaptchaService() {
 
-		try {
-			Class<?> clazz = Class.forName(DEFAULT_IMG_CAPTCHA_IMPL);
-			ImageCaptchaService service = (ImageCaptchaService) clazz.newInstance();
-			return service;
-		} catch (ClassNotFoundException e) {
-			
-			// JCaptcha Implementation Class Missing !
-			
-			String msg = "Unable to obtain class for default ImageCaptchaService Implementation : "
-					+ DEFAULT_IMG_CAPTCHA_IMPL;
-			log.fatal(msg, e);
-			throw new IllegalStateException(msg);
-		} catch (InstantiationException e) {
-			
-			// Instantiation Failure
-			
-			String msg = "Unable to instantiate default ImageCaptchaService implementation : "
-					+ DEFAULT_IMG_CAPTCHA_IMPL;
-			log.fatal(msg, e);
-			throw new IllegalStateException(msg);
-		} catch (IllegalAccessException e) {
-			
-			// Reflective Access Failure
-			
-			String msg = "Unable to instantiate default ImageCaptchaService implementation : "
-					+ DEFAULT_IMG_CAPTCHA_IMPL;
-			log.fatal(msg, e);
-			throw new IllegalStateException(msg);
-		} catch (Exception e) {
-			
-			// Unknown Failure
-			
-			String msg = "Unable to instantiate default ImageCaptchaService implementation : "
-					+ DEFAULT_IMG_CAPTCHA_IMPL;
-			log.fatal(msg, e);
-			throw new IllegalStateException(msg);
-		}
-	}
+        try {
+            Class<?> clazz = Class.forName(DEFAULT_IMG_CAPTCHA_IMPL);
+            return (ImageCaptchaService) clazz.newInstance();
+        } catch (ClassNotFoundException e) {
+            // JCaptcha Implementation Class Missing !
+            String msg = "Unable to find class for  : " + DEFAULT_IMG_CAPTCHA_IMPL;
+            LOG.fatal(msg, e);
+            throw new IllegalStateException(msg);
+        } catch (InstantiationException e) {
+            // Instantiation Failure
+            String msg = "Unable to instantiate class : " + DEFAULT_IMG_CAPTCHA_IMPL;
+            LOG.fatal(msg, e);
+            throw new IllegalStateException(msg);
+        } catch (IllegalAccessException e) {
+            // Reflective Access Failure
+            String msg = "Unable to instantiate class : " + DEFAULT_IMG_CAPTCHA_IMPL;
+            LOG.fatal(msg, e);
+            throw new IllegalStateException(msg);
+        } catch (Exception e) {
+            // Unknown Failure
+            String msg = "Unable to instantiate class : " + DEFAULT_IMG_CAPTCHA_IMPL;
+            LOG.fatal(msg, e);
+            throw new IllegalStateException(msg);
+        }
+    }
 
 }

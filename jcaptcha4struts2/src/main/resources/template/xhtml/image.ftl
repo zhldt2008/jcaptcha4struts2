@@ -46,6 +46,6 @@ Image Verification
 </tr>
 <tr>
 <td>
-<@s.textfield name="j_captcha_response"/>
+<@s.textfield name="jCaptchaResponse"/>
 </td>
 </tr>

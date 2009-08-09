@@ -8,14 +8,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>JCaptcha4Struts2 - Demonstration Application</title>
+<title>JCaptcha4Struts2 - Demonstration Application (Using JCaptchaBaseAction - XHTML)</title>
 </head>
 <body>
 <s:form action="form-no-intercept">
 	<s:textfield name="text" label="Text"/>
 	
 	<!-- The JCaptcha Control -->
-	<jcaptcha:image label="Type the text" width="100"/>
+	<jcaptcha:image label="Image Verification" width="100"/>
 	<s:submit />
 </s:form>
 </body>

@@ -1,0 +1,27 @@
+#labels Phase-Deploy
+This wiki page provides guidelines for using different Image Captcha Service engines with JCaptcha4Struts2.
+
+= Introduction =
+
+JCaptcha4Struts2 by default uses the com.octo.captcha.service.image.DefaultManageableImageCaptchaService class to generate captcha. This class is instantiated internally within the plugin.
+
+However, developers may require to use different ImageCaptchaService implementations due to various reasons, including clustered environments.
+
+There are two approaches to attach different captcha engines to the plugin.
+
+1. Programmatical Approach
+
+In programmatical approach, developers can directly attach an instance of any class that implements com.octo.captcha.service.image.ImageCaptchaService interface to the plugin.
+
+For example, if your implementation of ImageCaptchaService is MyImageCaptchaServiceImpl, all you have to do is, add the following line into some place where it will get invoked once before the actions are used (ideally, you could put this into a ServletContextListener).
+{{{
+   JC4S2Config.getInstance().setImageCaptchaService(MyImageCaptchaServiceImpl());
+}}}
+
+2. Spring-based Approach
+
+Alternatively, if you are using Spring, you could use the following bean definition to achieve the same.
+
+{{{
+Spring Bean Config Here
+}}}

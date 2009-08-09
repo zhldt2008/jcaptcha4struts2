@@ -16,58 +16,49 @@ package com.google.code.jcaptcha4struts2.demo.actions;
 import com.google.code.jcaptcha4struts2.common.actions.JCaptchaBaseAction;
 
 /**
- * Sample Action which does not use interceptors. Instead,
- * it extends from JCaptchaBaseAction class, which provides
- * support for handling captcha responses.
-
+ * Sample Action which does not use interceptors. Instead, it extends from JCaptchaBaseAction class,
+ * which provides support for handling captcha responses.
+ * 
  * @author Yohan Liyanage
  * @since 1.0
  * @version 2.0
  */
 public class FormActionNoIntercepter extends JCaptchaBaseAction {
 
-	private static final long serialVersionUID = 6643871470200594031L;
-	
-	private String text;
+    private static final long serialVersionUID = 6643871470200594031L;
 
-	/**
-	 * Standard Action Execution Method
-	 * 
-	 * @return action forward
-	 * @throws Exception if thrown by the ActionSupport execute method
-	 */
-	public String execute() throws Exception {
-		return super.execute();
-	}
-	
-	/**
-	 * Custom validation logic.
-	 */
-	public void validateInput() {
-		// Validation Logic Here
-		
-		// Note that you cannot override validate() method (it's final).
-		// Instead, the logic should be provided in this method.
-		
-		// You may utilize standard Struts 2 validation error API 
-		// to provide validation failure notifications (ex. addFieldError).
-	}
+    private String text;
 
-	/**
-	 * Returns the text provided by the user (using JSP).
-	 * @return text
-	 */
-	public String getText() {
-		return text;
-	}
+    /**
+     * Custom validation logic.
+     */
+    public void validateInput() {
+        // Validation Logic Here
 
-	/**
-	 * Sets the text provided by the user (using JSP).
-	 * @param text text
-	 */
-	public void setText(String text) {
-		this.text = text;
-	}
+        // Note that you cannot override validate() method (it's final).
+        // Instead, the logic should be provided in this method.
 
-	
+        // You may utilize standard Struts 2 validation error API
+        // to provide validation failure notifications (ex. addFieldError).
+    }
+
+    /**
+     * Returns the text provided by the user (using JSP).
+     * 
+     * @return text
+     */
+    public String getText() {
+        return text;
+    }
+
+    /**
+     * Sets the text provided by the user (using JSP).
+     * 
+     * @param text
+     *            text
+     */
+    public void setText(String text) {
+        this.text = text;
+    }
+
 }

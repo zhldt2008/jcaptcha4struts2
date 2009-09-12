@@ -92,7 +92,7 @@ The rest of the code is your normal action configuration.
 Write your JSP file, and add the following tag library declaration, along with struts tag library declaration.
 
 {{{
-<%@ taglib uri="http://code.google.com/p/jcaptcha4struts2/taglib/1.0" prefix="jcaptcha" %>
+<%@ taglib uri="http://code.google.com/p/jcaptcha4struts2/taglib/2.0" prefix="jcaptcha" %>
 }}}
 
 Then with in your form, just include `<jcaptcha:image label="Label Name Here"/>` tag.

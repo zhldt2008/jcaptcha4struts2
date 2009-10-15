@@ -6,10 +6,12 @@ As of Version 2.0.1, JCaptcha4Struts2 is built using Maven 2. If your project al
       <dependency>
          <groupId>com.google.code.jcaptcha4struts2</groupId>
          <artifactId>jcaptcha4struts2</artifactId>
-         <version>2.0.1</version>
+         <version>VERSION</version>
       </dependency>
    </dependencies>
 }}}
+
+Replace VERSION with the version that you would like to use. The latest release is version 2.0.2.
 
 <b>Note :</b> ~~JCaptcha4Struts2 is not available from Maven Central Repository yet. It is currently under the process of getting approved to be added to central.~~
 

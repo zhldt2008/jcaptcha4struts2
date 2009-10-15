@@ -3,7 +3,7 @@
 	<groupId>com.google.code.jcaptcha4struts2</groupId>
 	<artifactId>jcaptcha4struts2</artifactId>
 	<packaging>jar</packaging>
-	<version>2.0.2-SNAPSHOT</version>
+	<version>2.0.2</version>
 	<name>jcaptcha4struts2</name>
 	<description>JCaptcha4Struts2 is a Struts 2 Plugin which allows to add Captcha support to your Struts 2 Applications with a single JSP tag, and slight configuration in your struts.xml. It uses the powerful JCaptcha engine internally to generate the captcha.</description>
 	<url>http://code.google.com/p/jcaptcha4struts2/</url>
@@ -34,9 +34,9 @@
 		</developer>
 	</developers>
 	<scm>
-		<connection>scm:svn:http://jcaptcha4struts2.googlecode.com/svn/trunk/jcaptcha4struts2</connection>
-		<developerConnection>scm:svn:https://jcaptcha4struts2.googlecode.com/svn/trunk/jcaptcha4struts2</developerConnection>
-		<url>http://code.google.com/p/jcaptcha4struts2/source/browse/trunk/jcaptcha4struts2</url>
+		<connection>scm:svn:http://jcaptcha4struts2.googlecode.com/svn/tags/jcaptcha4struts2-2.0.2</connection>
+		<developerConnection>scm:svn:https://jcaptcha4struts2.googlecode.com/svn/tags/jcaptcha4struts2-2.0.2</developerConnection>
+		<url>http://code.google.com/p/jcaptcha4struts2/source/browse/tags/jcaptcha4struts2-2.0.2</url>
 	</scm>
 	<organization>
 		<name>Yohan Liyanage</name>

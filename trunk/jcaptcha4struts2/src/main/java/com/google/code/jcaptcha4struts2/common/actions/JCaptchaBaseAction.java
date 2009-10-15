@@ -16,6 +16,7 @@ package com.google.code.jcaptcha4struts2.common.actions;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.google.code.jcaptcha4struts2.core.PluginConstants;
 import com.google.code.jcaptcha4struts2.core.validation.JCaptchaValidator;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -124,7 +125,7 @@ public class JCaptchaBaseAction extends ActionSupport {
                 LOG.debug("validation failed (input string : '" + jCaptchaResponse
                         + "'), field error added");
             }
-            addFieldError("j_captcha_response", getValidationErrorMessage());
+            addFieldError(PluginConstants.J_CAPTCHA_RESPONSE, getValidationErrorMessage());
         }
     }
 

@@ -14,6 +14,6 @@ As of Version 2.0.1, JCaptcha4Struts2 is built using Maven 2. If your project al
 Replace VERSION with the version that you would like to use. The latest release is version 2.0.2.
 
 
-||*Version*||*Available in Maven Central ?*||
+|| *Version* || *Available in Maven Central ? * ||
 ||2.0.1||Yes||
 ||2.0.2||No - Pending Upload Request||

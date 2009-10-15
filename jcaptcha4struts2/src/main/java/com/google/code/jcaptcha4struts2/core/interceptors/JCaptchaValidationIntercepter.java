@@ -16,6 +16,7 @@ package com.google.code.jcaptcha4struts2.core.interceptors;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.google.code.jcaptcha4struts2.core.PluginConstants;
 import com.google.code.jcaptcha4struts2.core.validation.JCaptchaValidator;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionInvocation;
@@ -80,7 +81,7 @@ public class JCaptchaValidationIntercepter extends AbstractInterceptor {
             // Get Action Reference
             ValidationAware action = (ValidationAware) invocation.getAction();
 
-            action.addFieldError("j_captcha_response", getValidationErrorMessage());
+            action.addFieldError(PluginConstants.J_CAPTCHA_RESPONSE, getValidationErrorMessage());
             return Action.INPUT;
         }
 

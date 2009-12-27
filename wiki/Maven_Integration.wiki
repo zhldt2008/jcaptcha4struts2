@@ -16,4 +16,4 @@ Replace VERSION with the version that you would like to use. The latest release 
 
 || *Version* || *Available in Maven Central ? * ||
 ||2.0.1||Yes||
-||2.0.2||No - Pending Upload Request||
+||2.0.2||Yes||
